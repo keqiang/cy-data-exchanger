@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+
+  "name": "Cytoscape data exchanger",
+  "description": "This extension talks to local applications such as Cytoscape and IGV to exchange data",
+  "version": "0.0.0.1",
+
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_title": "Cytoscape Data Exchanger",
+    "default_popup": "popup.html"
+  },
+
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "http://localhost/*"
+  ],
+
+  "externally_connectable": {
+    "matches": ["[Your Website]", "http://localhost/*", "http://127.0.0.1/*"],
+    "accepts_tls_channel_id": false
+  },
+
+  "content_scripts": [{
+    "matches": ["[Your website]", "http://localhost/*", "http://127.0.0.1/*"],
+    "js": ["content.js"],
+    "all_frames": true
+  }],
+
+  "background": {
+    "scripts": ["bg.js"]
+  }
+}
